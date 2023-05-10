@@ -2,6 +2,9 @@
 name = "flag-parser"
 version = "0.1.0"
 edition = "2021"
+description = "Parses flags like \"-a\" or \"--long-flag\" in a given string"
+license = "MIT"
+repository = "https://github.com/lucasmelodev1/flag-parser"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
