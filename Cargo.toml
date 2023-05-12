@@ -1,6 +1,6 @@
 [package]
 name = "flag-parser"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Parses flags like \"-a\" or \"--long-flag\" in a given string"
 license = "MIT"
