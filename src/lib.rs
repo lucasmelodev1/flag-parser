@@ -1,3 +1,16 @@
+//! #Flag Parser
+//! Argument parsing for command line flags.
+//!
+//! ## Usage
+//!
+//! ```Rust
+//! let input = "-a -b -c -d --long-flag-a --long-flag-b --long-flag-c";
+//! let flags = flag_parser::get_flags(input);
+//! // flags = ["a", "b", "c", "d", "long-flag-a", "long-flag-b", "long-flag-c"]
+//!
+//! flags.contains("a") // true
+//! ```
+
 use std::collections::HashSet;
 
 /// Returns a vector with all flags in a given input
