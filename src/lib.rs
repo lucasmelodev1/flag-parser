@@ -19,26 +19,18 @@ use std::collections::HashSet;
 /// convertable to a single u8 integer like ASCII.
 pub fn get_flags(input: &str) -> Vec<&str> {
     let mut found_flags: HashSet<&str> = HashSet::new();
-    for word in input.split_whitespace() {
-        let word_bytes = word.as_bytes();
-
-        // If the word does not start with "-", it is
-        // not a flag, so we can just skip
-        if word_bytes.get(0) != Some(&b'-') {
-            continue;
-        }
-
-        // If the word start with "--", it is a long flag
-        if word_bytes.get(1) == Some(&b'-') {
-            found_flags.insert(&word[2..]);
-        } else {
-
-            // Add flags after "-" character by character
-            for (index, _) in word[1..].as_bytes().iter().enumerate() {
-                found_flags.insert(&word[index+1..index+2]);
+    input.split_whitespace()
+        .filter(|word| word.starts_with("-"))
+        .for_each(|word| {
+            if word.starts_with("--") { found_flags.insert(&word[2..]); } else {
+                word[1..].as_bytes()
+                    .iter()
+                    .enumerate()
+                    .for_each(|(i, _)| {
+                        found_flags.insert(&word[i + 1..i + 2]);
+                    })
             }
-        }
-    };
+        });
 
     found_flags.into_iter().collect()
 }
